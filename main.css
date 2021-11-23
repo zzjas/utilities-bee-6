@@ -15,3 +15,55 @@ li{
       font-size: 5vw;
     }
 }
+
+a,button {
+    display:inline-block;
+    padding:0.35em 1.2em;
+    border:0.1em solid #000000;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#000000;
+    text-align:center;
+    transition: all 0.2s;
+}
+
+a:hover{
+    color:#FFFFFF;
+    background-color:#63D2FF;
+    transition: border-width 0.1s ease-in-out;
+    border:0.15em solid #000000;
+}
+
+button:hover{
+    color:#FFFFFF;
+    background-color:#78D5D7;
+    transition: border-width 0.1s ease-in-out;
+    border:0.15em solid #000000;
+}
+
+@media all and (max-width:30em){
+    a{
+        display:block;
+        margin:0.4em auto;
+    }
+}
+
+
+input{
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+}
+  
+input:focus{
+    border-color:dodgerBlue;
+    box-shadow:0 0 8px 0 dodgerBlue;
+}
