@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Base Converter</title>
+	<meta name="Resource-type" content="Document" />
+    <link rel="stylesheet" type="text/css" href="../main.css" />
+	<script type="text/javascript" src="../base.js"></script>
+    <link rel="stylesheet" type="text/css" href="self.css" />
+</head>
+<body>
+	<a href="..">back</a> <br/><br/>
+	<ul>
+		<li>
+			<label>Decimal</label>
+			<input type="text" id="decimal"/>
+		</li>
+		<li>
+			<label>Binary</label>
+			<input type="text" id="binary"/>
+		</li>
+		<li>
+			<label>Hex</label>
+			<input type="text" id="hex"/>
+		</li>
+		<li>
+			<label>Oct</label>
+			<input type="text" id="oct"/>
+		</li>
+	</ul>
+
+	<script type="text/javascript">
+		const bases = [10, 2, 16, 8];
+		let inputs = Array.from(TAG("input"));
+		inputs.forEach((curr,i) => {
+			curr.addEventListener("input", ()=> {
+				let value = parseBase(curr.value, bases[i]);
+				inputs.forEach((other, i) => {
+					if(other != curr) {
+						other.value = value.toString(bases[i]);
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>
