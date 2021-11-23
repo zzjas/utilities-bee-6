@@ -11,24 +11,34 @@
 </head>
 <body>
 	<a href="..">back</a> <br/><br/>
+	<p>Random numbers are retrived from random.org</p><br/>
 
-	<label for="lower">Inclusive lower bound:</label>
-	<input type="number" id="lower" name="lower">
+	<label for="lower">Inclusive min:</label>
+	<input type="number" id="lower" name="lower" value="0">
 	<br/><br/>
-	<label for="upper">Inclusive upper bound:</label>
-	<input type="number" id="upper" name="upper">
+	<label for="upper">Inclusive max:</label>
+	<input type="number" id="upper" name="upper" value="1">
 	<br/><br/>
-	<button id="generate">Get a pseudorandom integer</button>
+	<button id="generate">Get a <b>true</b> random integer</button>
     
 	<script type="text/javascript">
+		function getRandomInteger(min, max){
+			return fetch(new Request(
+				`https://www.random.org/integers/?num=1&min=${min}&max=${max}&col=1&base=10&format=plain&rnd=new`,
+				{method : "GET"}))
+			.then(res => res.ok ? res.text() : new Promise((res) => res(-1)))
+			.then(res => {
+				return parseBase10(res);
+			})
+		}
 		document.getElementById("generate").addEventListener("click", () => {
 			let lower = parseBase10(ID("lower").value);
 			let upper = parseBase10(ID("upper").value);
-			if(upper == lower) upper += 1; // If no input, choose between 0 and 1
-			let r = Math.floor(Math.random() * (upper-lower+1) + lower);
-			let re = document.createElement('p');
-			re.innerHTML = r;
-			document.body.appendChild(re);
+			getRandomInteger(lower, upper).then(r => {
+				let re = document.createElement('p');
+				re.innerHTML = r;
+				document.body.appendChild(re);
+			});
 		});
 	</script>
 </body>
