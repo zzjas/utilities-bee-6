@@ -9,7 +9,7 @@
 </head>
 <body>
     <ul>
-        <li><p id="time"> </p></li>
+        <li><p id="stopwatch"></p></li>
         <li><a href="random">True Random Number</a></li>
         <li><a href="splitbills">Split Bills</a></li>
         <li><a href="wordcounter">Word Counter</a></li>
@@ -17,12 +17,22 @@
         <li><a href="unicode">Unicode</a></li>
     </ul>
     <script type="text/javascript">
+        let start;
         function updateTime() {
-            let d = new Date();
-            document.getElementById("time").innerHTML = `${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}:${d.getSeconds().toString().padStart(2, '0')}`;
+            let duration = performance.now() - start;
+            let ts = [
+                Math.floor((duration / (1000 * 60 * 60)) % 24),
+                Math.floor((duration / (1000 * 60)) % 60),
+                Math.floor((duration / 1000) % 60),
+            ];
+            document.getElementById("stopwatch").innerHTML
+                = ts.map(t => t.toString().padStart(2,'0')).join(':');
         }
-        window.onload = updateTime;
-        window.setInterval(updateTime, 1000);
+        window.onload = () => {
+            start = performance.now();
+            updateTime();
+        };
+        window.setInterval(updateTime, 500);
     </script>
 </body>
 </html>
