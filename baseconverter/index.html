@@ -38,7 +38,7 @@
 				let value = parseBase(curr.value, bases[i]);
 				inputs.forEach((other, i) => {
 					if(other != curr) {
-						other.value = value.toString(bases[i]);
+						other.value = value.toString(bases[i]).toUpperCase();
 					}
 				});
 			});

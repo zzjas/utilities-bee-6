@@ -9,15 +9,20 @@
 </head>
 <body>
     <ul>
-        <li>Tools:</li>
+        <li><p id="time"> </p></li>
         <li><a href="random">True Random Number</a></li>
         <li><a href="splitbills">Split Bills</a></li>
         <li><a href="wordcounter">Word Counter</a></li>
         <li><a href="baseconverter">Base Converter</a></li>
+        <li><a href="unicode">Unicode</a></li>
     </ul>
-    <ul>
-        <li>Links:</li>
-        <li><a href="https://pixspy.com/">Imaeg Inspector</a></li>
-    </ul>
+    <script type="text/javascript">
+        function updateTime() {
+            let d = new Date();
+            document.getElementById("time").innerHTML = `${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}:${d.getSeconds().toString().padStart(2, '0')}`;
+        }
+        window.onload = updateTime;
+        window.setInterval(updateTime, 1000);
+    </script>
 </body>
 </html>
