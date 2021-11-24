@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Currency Converter</title>
+	<meta name="Resource-type" content="Document" />
+    <link rel="stylesheet" type="text/css" href="../main.css" />
+	<script type="text/javascript" src="../base.js"></script>
+</head>
+<body>
+	<a href="..">back</a> <br/><br/>
+	<p>Rates are retrived from currency-api</p><br/>
+	<table class="center">
+		<tr>
+			<td>USD</td>
+			<td><input type="number" /></td>
+		</tr>
+		<tr>
+			<td>CNY</td>
+			<td><input type="number" /></td>
+		</tr>
+		<tr>
+			<td>JPY</td>
+			<td><input type="number" /></td>
+		</tr>
+		<tr>
+			<td>CAD</td>
+			<td><input type="number" /></td>
+		</tr>
+		<tr>
+			<td>HKD</td>
+			<td><input type="number" /></td>
+		</tr>
+		<tr>
+			<td>GBP</td>
+			<td><input type="number" /></td>
+		</tr>
+		<tr>
+			<td>EUR</td>
+			<td><input type="number" /></td>
+		</tr>
+	</table>
+
+	<script type="text/javascript">
+		let names= ["usd", "cny", "jpy", "cad", "hkd", "gbp", "eur"]
+		fetch(
+			'https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/eur.json',
+			{method : "GET", mode : "cors"})
+		.then(res => res.ok ? res.text() : new Promise(() => {console.log("failed")}))
+		.then(res => {
+			let rates = JSON.parse(res).eur;
+			let inputs = Array.from(TAG("input"));
+			inputs.forEach((curr, i) => {
+				curr.addEventListener("input", () => {
+					let value = parseBase10(curr.value) / rates[names[i]];
+					inputs.forEach((other, j) => {
+						if(curr != other) other.value  = (value * rates[names[j]]).toFixed(2);
+					});
+				});
+			});
+		})
+	</script>
+</body>
+</html>
