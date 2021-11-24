@@ -41,7 +41,7 @@
 				.map(e => parseBase10(e.getElementsByClassName("amount")[0].value));
 			splitBill(amounts, total).forEach((e,i) => {
 				let re = document.createElement('p');
-				re.innerHTML = `Person ${i+1} should pay about: $${e.toFixed(2)}`;
+				re.innerHTML = `Person ${i+1}: $${e.toFixed(2)}`;
 				document.body.appendChild(re);
 			});
 		});

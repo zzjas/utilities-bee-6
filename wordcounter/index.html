@@ -7,7 +7,6 @@
 	<meta name="Resource-type" content="Document" />
     <link rel="stylesheet" type="text/css" href="../main.css" />
 	<script type="text/javascript" src="../base.js"></script>
-    <link rel="stylesheet" type="text/css" href="self.css" />
 </head>
 <body>
 	<a href="..">back</a> <br/><br/>
@@ -23,7 +22,7 @@
 		let ta = ID("str");
 		ta.addEventListener("input", () => {
 			let str = ta.value;
-			ID("word_count").innerHTML = str ? str.split(" ").length : 0;
+			ID("word_count").innerHTML = str ? str.trim().split(" ").length : 0;
 			ID("char_count").innerHTML = str.length;
 		});
 	</script>
