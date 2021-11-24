@@ -7,39 +7,143 @@
 	<meta name="Resource-type" content="Document" />
     <link rel="stylesheet" type="text/css" href="../main.css" />
 	<script type="text/javascript" src="../base.js"></script>
+	<style>
+		input {
+  			text-align: right;
+		}
+	</style>
 </head>
 <body>
 	<a href="..">back</a> <br/><br/>
-	<ul>
-		<li>
-			<label>Decimal</label>
-			<input type="text" id="decimal"/>
-		</li>
-		<li>
-			<label>Binary</label>
-			<input type="text" id="binary"/>
-		</li>
-		<li>
-			<label>Hex</label>
-			<input type="text" id="hex"/>
-		</li>
-		<li>
-			<label>Oct</label>
-			<input type="text" id="oct"/>
-		</li>
-	</ul>
+
+	<table class="center">
+		<colgroup>
+			<col class="outline">
+		</colgroup>
+		<tr class="outline">
+			<th></th>
+			<th>Decimal</th>
+			<th>Binary</th>
+			<th>Hex</th>
+			<th>Oct</th>
+		</tr>
+		<tr>
+			<td>X</td>
+			<td><input type="text" class="x"></td>
+			<td><input type="text" class="x"></td>
+			<td><input type="text" class="x"></td>
+			<td><input type="text" class="x"></td>
+		</tr>
+		<tr>
+			<td>Y</td>
+			<td><input type="text" class="y"></td>
+			<td><input type="text" class="y"></td>
+			<td><input type="text" class="y"></td>
+			<td><input type="text" class="y"></td>
+		</tr>
+		<tr>
+			<td>X & Y</td>
+			<td><input type="text" class="and" disabled></td>
+			<td><input type="text" class="and" disabled></td>
+			<td><input type="text" class="and" disabled></td>
+			<td><input type="text" class="and" disabled></td>
+		</tr>
+		<tr>
+			<td>X | Y</td>
+			<td><input type="text" class="or" disabled></td>
+			<td><input type="text" class="or" disabled></td>
+			<td><input type="text" class="or" disabled></td>
+			<td><input type="text" class="or" disabled></td>
+		</tr>
+		<tr>
+			<td>X ^ Y</td>
+			<td><input type="text" class="xor" disabled></td>
+			<td><input type="text" class="xor" disabled></td>
+			<td><input type="text" class="xor" disabled></td>
+			<td><input type="text" class="xor" disabled></td>
+		</tr>
+		<tr>
+			<td>X + Y</td>
+			<td><input type="text" class="sum" disabled></td>
+			<td><input type="text" class="sum" disabled></td>
+			<td><input type="text" class="sum" disabled></td>
+			<td><input type="text" class="sum" disabled></td>
+		</tr>
+		<tr>
+			<td>X - Y</td>
+			<td><input type="text" class="diff" disabled></td>
+			<td><input type="text" class="diff" disabled></td>
+			<td><input type="text" class="diff" disabled></td>
+			<td><input type="text" class="diff" disabled></td>
+		</tr>
+		<tr>
+			<td>X * Y</td>
+			<td><input type="text" class="prduct" disabled></td>
+			<td><input type="text" class="prduct" disabled></td>
+			<td><input type="text" class="prduct" disabled></td>
+			<td><input type="text" class="prduct" disabled></td>
+		</tr>
+		<tr>
+			<td>X / Y</td>
+			<td><input type="text" class="quotient" disabled></td>
+			<td><input type="text" class="quotient" disabled></td>
+			<td><input type="text" class="quotient" disabled></td>
+			<td><input type="text" class="quotient" disabled></td>
+		</tr>
+	</table>
 
 	<script type="text/javascript">
 		const bases = [10, 2, 16, 8];
-		let inputs = Array.from(TAG("input"));
-		inputs.forEach((curr,i) => {
-			curr.addEventListener("input", ()=> {
-				let value = parseBase(curr.value, bases[i]);
-				inputs.forEach((other, i) => {
-					if(other != curr) {
-						other.value = value.toString(bases[i]).toUpperCase();
-					}
+		let xs        = Array.from(CLASS("x"));
+		let ys        = Array.from(CLASS("y"));
+		let results = [
+			Array.from(CLASS("and")),
+			Array.from(CLASS("or")),
+			Array.from(CLASS("xor")),
+			Array.from(CLASS("sum")),
+			Array.from(CLASS("diff")),
+			Array.from(CLASS("prduct")),
+			Array.from(CLASS("quotient")),
+		];
+
+		function updateValue(es, curr, n) {
+			es.forEach((e, i) => {
+				if(e != curr) e.value = n.toString(bases[i]).toUpperCase();
+			});
+		}
+
+		function calculate(x, y) {
+			let values = [
+				x & y,
+				x | y,
+				x ^ y,
+				x + y,
+				x - y,
+				x * y,
+				~~(x / y)
+			];
+			results.forEach((elems,i) => {
+				elems.forEach((elem,j) => {
+					elem.value = values[i].toString(bases[j]).toUpperCase();
 				});
+			});
+		}
+
+		xs.forEach((curr,i) => {
+			curr.addEventListener("input", ()=> {
+				let x = parseBase(curr.value, bases[i]);
+				updateValue(xs, curr, x);
+				let y = parseBase(ys[i].value, bases[i]);
+				calculate(x, y);
+			});
+		});
+
+		ys.forEach((curr,i) => {
+			curr.addEventListener("input", ()=> {
+				let x = parseBase(xs[i].value, bases[i]);
+				let y = parseBase(curr.value, bases[i]);
+				updateValue(ys, curr, y);
+				calculate(x, y);
 			});
 		});
 	</script>
