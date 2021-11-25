@@ -1,6 +1,7 @@
 function parseBase(s, base) {
     const parsed = parseInt(s, base);
-    return isNaN(parsed) ? 0 : parsed;
+    return parsed;
+    // return isNaN(parsed) ? 0 : parsed;
 }
 
 function parseBase10(s) {

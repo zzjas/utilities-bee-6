@@ -27,19 +27,25 @@
 			Person 4 amount:
 			<input type="number" class="amount">
 		</li>
+        <li>
+			Shared amount:
+			<input type="number" id="shared">
+		</li>
     </ul>
 	<div>Total amount: <input type="number" id="total"></div><br/>
 	<button id="generate">Split it</button>
 	<script type="text/javascript">
-		function splitBill(amounts, total) {
-			const sum = amounts.reduce((a,b)=>a+b);
-			return amounts.map(e => (e/sum) * total);
+		function splitBill(amounts, total, shared) {
+			const splitShare = shared / (amounts.filter(e => !isNaN(e)).length)
+			const sum = amounts.reduce((a,b)=> isNaN(b) ? a : a+b) + shared;
+			console.log(`total: ${total}, shared: ${shared}, splitShare: ${splitShare}, sum: ${sum}, amounts: ${amounts}`)
+			return amounts.map(e => isNaN(e) ? 0 : (((e + splitShare)/sum) * total));
 		}
 		document.getElementById("generate").addEventListener("click", ()=>{
-			let total = parseBase10(ID("total").value);
-			let amounts = Array.from(ID("amounts").getElementsByTagName("li"))
-				.map(e => parseBase10(e.getElementsByClassName("amount")[0].value));
-			splitBill(amounts, total).forEach((e,i) => {
+			let total = parseFloat(ID("total").value);
+			let shared = parseFloat(ID("shared").value);
+			let amounts = Array.from(CLASS("amount")).map(e => parseFloat(e.value));
+			splitBill(amounts, total, shared).forEach((e,i) => {
 				let re = document.createElement('p');
 				re.innerHTML = `Person ${i+1}: $${e.toFixed(2)}`;
 				document.body.appendChild(re);
