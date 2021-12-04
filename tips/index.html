@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Tips</title>
+	<meta name="Resource-type" content="Document" />
+    <link rel="stylesheet" type="text/css" href="../main.css" />
+	<script type="text/javascript" src="../base.js"></script>
+</head>
+<body>
+	<a href="..">back</a> <br/><br/>
+	Before tip: <input type="text" id="bill"/>
+	<table class="center">
+		<tr>
+			<td>15% tip: </td>
+			<td class="tip"><td>
+		</tr>
+		<tr>
+			<td>18% tip: </td>
+			<td class="tip"><td>
+		</tr>
+		<tr>
+			<td>20% tip: </td>
+			<td class="tip"><td>
+		</tr>
+		<tr>
+			<td>25% tip: </td>
+			<td class="tip"><td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		let ratios = [0.15, 0.18, 0.20, 0.25];
+		let bill_elem = ID("bill");
+		bill_elem.addEventListener("input", () => {
+			let bill = parseBase10(bill_elem.value);
+			Array.from(CLASS("tip")).forEach((tip,i) => {
+				let t = ratios[i] * bill;
+				let b = t + bill;
+				tip.innerHTML = `$${t.toFixed(2)} ==> $${b.toFixed(2)}`;
+			});
+		});
+	</script>
+</body>
+</html>
