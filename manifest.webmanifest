@@ -1,0 +1,15 @@
+{
+    "background_color": "white",
+    "description": "Some useful tools.",
+    "display": "standalone",
+    "icons": [
+      {
+        "src": "ios_icon.png",
+        "sizes": "150x150",
+        "type": "image/png"
+      }
+    ],
+    "name": "Utilities",
+    "short_name": "Util",
+    "start_url": "/index.html"
+}
