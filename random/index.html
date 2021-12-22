@@ -13,10 +13,10 @@
 	<p>Random numbers are retrived from random.org</p><br/>
 
 	<label for="lower">Inclusive min:</label>
-	<input type="number" id="lower" name="lower" value="0">
+	<input type="number" id="lower" name="lower" value="2">
 	<br/><br/>
 	<label for="upper">Inclusive max:</label>
-	<input type="number" id="upper" name="upper" value="1">
+	<input type="number" id="upper" name="upper" value="3">
 	<br/><br/>
 	<button id="generate">Get a <b>true</b> random integer</button>
     
@@ -30,7 +30,7 @@
 				return parseBase10(res);
 			})
 		}
-		document.getElementById("generate").addEventListener("click", () => {
+		function addNumber() {
 			let lower = parseBase10(ID("lower").value);
 			let upper = parseBase10(ID("upper").value);
 			getRandomInteger(lower, upper).then(r => {
@@ -38,7 +38,9 @@
 				re.innerHTML = r;
 				document.body.appendChild(re);
 			});
-		});
+		}
+		document.getElementById("generate").addEventListener("click", addNumber);
+		window.onload = addNumber;
 	</script>
 </body>
 </html>
