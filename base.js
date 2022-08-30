@@ -11,5 +11,5 @@ function safeParseFloat(s) {
 }
 
 const ID = (s) => document.getElementById(s);
-const CLASS = (s) => document.getElementsByClassName(s);
-const TAG = (s) => document.getElementsByTagName(s);
+const CLASS = (s) => Array.from(document.getElementsByClassName(s));
+const TAG = (s) => Array.from(document.getElementsByTagName(s));

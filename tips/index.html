@@ -36,7 +36,7 @@
 			console.log(`Input: ${bill_elem.value}`);
 			let bill = safeParseFloat(bill_elem.value);
 			console.log(`Bill : ${bill}`);
-			Array.from(CLASS("tip")).forEach((tip,i) => {
+			CLASS("tip").forEach((tip,i) => {
 				let t = ratios[i] * bill;
 				let b = t + bill;
 				tip.innerHTML = `$${t.toFixed(2)} ==> $${b.toFixed(2)}`;

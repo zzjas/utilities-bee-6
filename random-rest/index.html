@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Random Number</title>
+	<meta name="Resource-type" content="Document" />
+    <link rel="stylesheet" type="text/css" href="../main.css" />
+	<script type="text/javascript" src="../base.js"></script>
+	<style>
+		label {
+			margin-left: 1vw;
+			margin-bottom: 4vw;
+		}
+		#out {
+			text-align: justify;
+			padding-left: 46%;
+		}
+		@media screen and (max-width: 1300px) {
+			#out {
+				padding-left: 25%;
+			}
+			label {
+				margin-left: 6vw;
+				margin-bottom: 4vw;
+			}
+		}
+	</style>
+</head>
+<body>
+	<a href="..">back</a> <br/><br/>
+	<div id="out">
+		<div><input type="checkbox" id="all"><label>All</label></div>
+		<div><input type="checkbox" id="lunch" checked><label></label></div>
+		<div><input type="checkbox" id="dinner"><label></label></div>
+		<div><input type="checkbox" id="chinese"><label></label></div>
+		<div><input type="checkbox" id="asian"><label></label></div>
+		<div><input type="checkbox" id="other"><label><label></div>
+	</div>
+
+	<br>
+	<button id="pick">Pikachu</button>
+	<p class="result"> </p>
+	<p class="result"> </p>
+	<p class="result"> </p>
+	<button id="show">Show me the list</button>
+	<div id="lists"></div>
+
+	<br>
+	<script type="text/javascript">
+		const LUNCH = [
+			"Evo Cafe",
+			"Kung Fu",
+			"CU LaLa ",
+			"Poke Lab",
+			"Jip Bap",
+			"Subway",
+			"McDonald's",
+			"Chipotle"
+		];
+		const DINNER = LUNCH.filter(r => ![
+			"Evo Cafe"
+		].includes(r));
+		const CHINESE = [
+			"Lao Sze Chuan",
+			"Mid Summer Lounge",
+			"Kung Fu",
+		];
+		const ASIAN = [
+			"Yogi",
+			"Star Karaoke",
+			"Star BBQ",
+		];
+		const OTHER = [
+			"LongHorn",
+			"Roadhouse",
+			"Silvercreek"
+		];
+		const LISTS = [LUNCH, DINNER, CHINESE, ASIAN, OTHER]
+		const CATEGORIES = ["Quick Lunch", "Quick Dinner", "Chinese", "Other Asian", "Other (MX/US/EU...)"];
+
+		function getRandomOne() {
+			console.log(`Get random one`);
+			let checks = TAG("input").map(e => e.checked);
+			checks = checks[0] ? Array(5).fill(true) : checks.slice(1);
+
+			let all = []
+			checks.forEach((c, i) => {
+				all = c ? all.concat(LISTS[i].filter(r => !all.includes(r))) : all;
+			});
+
+			let nums = new Set();
+			while(nums.size !== 3 && nums.size !== all.length) {
+  				nums.add(Math.floor(Math.random()*all.length));
+			}
+			nums = Array.from(nums);
+			console.log(nums);
+			let results = CLASS("result");
+			results.forEach(e => e.innerText = " ");
+			nums.forEach((e,i) => {
+				results[i].innerText = all[e];
+			});
+			
+		}
+
+		function showLists() {
+			if(window.listShown) return;
+			window.listShown = true;
+			console.log(`Show lists`);
+			let lists = ID("lists");
+			CATEGORIES.forEach((c,i) => {
+				console.log(`Adding list ${c}`);
+				let title = document.createElement("h3");
+				title.innerText = c;
+				let ul = document.createElement("ul");
+				LISTS[i].forEach(r => {
+					console.log(`Adding restaurant ${r}`);
+					let li = document.createElement("li");
+					li.innerText = r;
+					ul.appendChild(li);
+				})
+				lists.appendChild(title);
+				lists.appendChild(ul);
+			});
+		}
+		window.onload = () => {
+			TAG("label").forEach((element, i) => i && (element.innerHTML = CATEGORIES[i-1]));
+			ID("show").addEventListener("click", () => showLists());
+			ID("pick").addEventListener("click", () => getRandomOne());
+			window.listShown = false;
+		}
+	</script>
+</body>
+</html>

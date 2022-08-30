@@ -43,7 +43,7 @@
 		}
 		document.getElementById("generate").addEventListener("click", ()=>{
 			let shared = safeParseFloat(ID("shared").value);
-			let amounts = Array.from(CLASS("amount")).map(e => safeParseFloat(e.value));
+			let amounts = CLASS("amount").map(e => safeParseFloat(e.value));
 			let total = safeParseFloat(ID("total").value) || amounts.reduce((a,e) => a+e) + shared;
 			splitBill(amounts, total, shared).forEach((e,i) => {
 				let re = document.createElement('p');

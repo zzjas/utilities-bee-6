@@ -94,16 +94,16 @@
 
 	<script type="text/javascript">
 		const bases = [10, 2, 16, 8];
-		let xs        = Array.from(CLASS("x"));
-		let ys        = Array.from(CLASS("y"));
+		let xs        = CLASS("x");
+		let ys        = CLASS("y");
 		let results = [
-			Array.from(CLASS("and")),
-			Array.from(CLASS("or")),
-			Array.from(CLASS("xor")),
-			Array.from(CLASS("sum")),
-			Array.from(CLASS("diff")),
-			Array.from(CLASS("prduct")),
-			Array.from(CLASS("quotient")),
+			CLASS("and"),
+			CLASS("or"),
+			CLASS("xor"),
+			CLASS("sum"),
+			CLASS("diff"),
+			CLASS("prduct"),
+			CLASS("quotient"),
 		];
 
 		function updateValue(es, curr, n) {

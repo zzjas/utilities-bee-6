@@ -31,8 +31,7 @@
 
 	<script type="text/javascript">
 		const bases = [10, 2, 16, 8];
-		let inputs = Array.from(TAG("input"));
-		inputs.forEach((curr,i) => {
+		TAG("input").forEach((curr,i) => {
 			curr.addEventListener("input", ()=> {
 				let value = parseBase(curr.value, bases[i]);
 				inputs.forEach((other, i) => {

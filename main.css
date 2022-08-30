@@ -10,9 +10,14 @@ li{
     margin: 15px 0;
 }
 
+
 @media screen and (max-width: 1300px) {
     * {
-      font-size: 5vw;
+      font-size: 6vw;
+    }
+
+    input[type=checkbox] {
+        transform: scale(4);
     }
 }
 
