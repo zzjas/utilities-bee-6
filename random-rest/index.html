@@ -83,7 +83,6 @@
 		const CATEGORIES = ["Quick Lunch", "Quick Dinner", "Chinese", "Other Asian", "Other (MX/US/EU...)"];
 
 		function getRandomOne() {
-			console.log(`Get random one`);
 			let checks = TAG("input").map(e => e.checked);
 			checks = checks[0] ? Array(5).fill(true) : checks.slice(1);
 
@@ -97,7 +96,6 @@
   				nums.add(Math.floor(Math.random()*all.length));
 			}
 			nums = Array.from(nums);
-			console.log(nums);
 			let results = CLASS("result");
 			results.forEach(e => e.innerText = " ");
 			nums.forEach((e,i) => {
@@ -109,22 +107,22 @@
 		function showLists() {
 			if(window.listShown) return;
 			window.listShown = true;
-			console.log(`Show lists`);
 			let lists = ID("lists");
 			CATEGORIES.forEach((c,i) => {
-				console.log(`Adding list ${c}`);
 				let ul = document.createElement("ul");
 				let title = document.createElement("li");
 				title.innerHTML = `<h3>${c}</h3>`;
 				ul.appendChild(title);
 				LISTS[i].forEach(r => {
-					console.log(`Adding restaurant ${r}`);
 					let li = document.createElement("li");
 					li.innerText = r;
 					ul.appendChild(li);
 				})
 				lists.appendChild(ul);
 			});
+		    let pr = document.createElement("p");
+			pr.innerHTML = '<a href="https://github.com/zzjas/utilities-bee-6/blob/main/random-rest/index.html#L54-L81" styly="none">Create a PR to add more restaurants</a>';
+			lists.appendChild(pr);
 		}
 		window.onload = () => {
 			TAG("label").forEach((element, i) => i && (element.innerHTML = CATEGORIES[i-1]));
