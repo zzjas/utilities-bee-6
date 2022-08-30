@@ -10,7 +10,7 @@
 </head>
 <body>
 	<a href="..">back</a> <br/><br/>
-	Before tip: <input type="text" id="bill"/>
+	Before tip: <input type="number" id="bill"/>
 	<table class="center">
 		<tr>
 			<td>15% tip: </td>
@@ -33,7 +33,9 @@
 		let ratios = [0.15, 0.18, 0.20, 0.25];
 		let bill_elem = ID("bill");
 		bill_elem.addEventListener("input", () => {
-			let bill = parseBase10(bill_elem.value);
+			console.log(`Input: ${bill_elem.value}`);
+			let bill = safeParseFloat(bill_elem.value);
+			console.log(`Bill : ${bill}`);
 			Array.from(CLASS("tip")).forEach((tip,i) => {
 				let t = ratios[i] * bill;
 				let b = t + bill;

@@ -1,7 +1,5 @@
 function parseBase(s, base) {
-    const parsed = parseInt(s, base);
-    return parsed;
-    // return isNaN(parsed) ? 0 : parsed;
+    return parseInt(s, base) || 0;
 }
 
 function parseBase10(s) {
@@ -9,7 +7,7 @@ function parseBase10(s) {
 }
 
 function safeParseFloat(s) {
-    return parseFloat(s) | 0;
+    return parseFloat(s) || 0;
 }
 
 const ID = (s) => document.getElementById(s);
