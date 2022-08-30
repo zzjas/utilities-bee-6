@@ -16,6 +16,9 @@
 			text-align: justify;
 			padding-left: 46%;
 		}
+		ul {
+			padding-inline-start: 0;
+		}
 		@media screen and (max-width: 1300px) {
 			#out {
 				padding-left: 25%;
@@ -110,16 +113,16 @@
 			let lists = ID("lists");
 			CATEGORIES.forEach((c,i) => {
 				console.log(`Adding list ${c}`);
-				let title = document.createElement("h3");
-				title.innerText = c;
 				let ul = document.createElement("ul");
+				let title = document.createElement("li");
+				title.innerHTML = `<h3>${c}</h3>`;
+				ul.appendChild(title);
 				LISTS[i].forEach(r => {
 					console.log(`Adding restaurant ${r}`);
 					let li = document.createElement("li");
 					li.innerText = r;
 					ul.appendChild(li);
 				})
-				lists.appendChild(title);
 				lists.appendChild(ul);
 			});
 		}
