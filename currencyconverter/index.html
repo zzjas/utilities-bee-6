@@ -50,7 +50,8 @@
 		.then(res => res.ok ? res.text() : new Promise(() => {console.log("failed")}))
 		.then(res => {
 			let rates = JSON.parse(res).eur;
-			TAG("input").forEach((curr, i) => {
+			let inputs = TAG("input");
+			inputs.forEach((curr, i) => {
 				curr.addEventListener("input", () => {
 					let value = parseBase10(curr.value) / rates[names[i]];
 					inputs.forEach((other, j) => {
