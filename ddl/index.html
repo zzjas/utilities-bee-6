@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Random Number</title>
+	<meta name="Resource-type" content="Document" />
+    <link rel="stylesheet" type="text/css" href="../main.css" />
+	<script type="text/javascript" src="../base.js"></script>
+	<style>
+		table {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+		td {
+			padding-top: 4px;
+			padding-bottom: 4px;
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+		table td + td { border-left:thin solid black; }
+		tr#cut {
+			border-top: thick solid red;
+		}
+	</style>
+</head>
+<body>
+	<a href="..">back</a> <br/><br/>
+	<p>Do not rely on this.</p><br/>
+
+	<table class="center">
+		<tr>
+			<th>Conference</th>
+			<th>DDL</th>
+			<th>Days Until</th>
+		</tr>
+	</table>
+
+	<script type="text/javascript">
+		window.onload = () => {
+			let table = document.getElementsByTagName("table")[0];
+			let ddl = [
+				["OOPSLA R1", "Oct 28, 2022"],
+				["OOPSLA R2", "Apr 14, 2023"],
+				["PLDI", "Nov 10, 2022"],
+				["POPL", "Jul 7, 2022"],
+
+				["ICSE", "Sep 1, 2022"],
+				["FSE", "Feb 2, 2023"],
+				// ["ASE", ""],
+				["ISSTA R1", "Nov 10, 2022"],
+				["ISSTA R2", "Feb 16, 2022"],
+
+				["Security R3", "Feb 7, 2023"],
+				["Oakland R3", "Dec 2, 2022"],
+				["CCS R1", "Jan 14, 2022"],
+				["CCS R2", "May 2, 2022"],
+				["NDSS R1", "May 13, 2022"],
+				["NDSS R2", "Jul 29, 2022"],
+
+				["OSDI", "Dec 13, 2022"],
+				["SOSP", "May 7, 2021"],
+
+				["ASPLOS R3", "Oct 13, 2022"],
+			];
+			ddl.forEach(e => {
+				let difference = (new Date(e[1])) - (new Date());
+				let days = Math.ceil(difference / (1000 * 3600 * 24));
+				e.push(days);
+			});
+			ddl.sort((x,y) => x[2]-y[2]);
+			let cut = false;
+			ddl.forEach(e => {
+				if(!e[1]) return;
+				let tr = document.createElement('tr');
+				if(!cut && e[2] > 0) {
+					cut = true;
+					tr.setAttribute("id", "cut");
+				}
+				tr.innerHTML = `<td>${e[0]}</td><td>${e[1]}</td><td>${e[2]}</td>`;
+				table.appendChild(tr);
+			});
+		};
+	</script>
+</body>
+</html>
