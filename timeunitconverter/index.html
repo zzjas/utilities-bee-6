@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Time Unit Converter</title>
+	<meta name="Resource-type" content="Document" />
+    <link rel="stylesheet" type="text/css" href="../main.css" />
+	<script type="text/javascript" src="../base.js"></script>
+</head>
+<body>
+	<a href="..">back</a> <br/><br/>
+	<table class="center">
+		<tr>
+			<td>Year</td>
+			<td><input type="text" id="year"/></td>
+		</tr>
+		<tr>
+			<td>Week</td>
+			<td><input type="text" id="week"/></td>
+		</tr>
+		<tr>
+			<td>Day</td>
+			<td><input type="text" id="day"/></td>
+		</tr>
+		<tr>
+			<td>Hour</td>
+			<td><input type="text" id="hour"/></td>
+		</tr>
+		<tr>
+			<td>Minute</td>
+			<td><input type="text" id="minute"/></td>
+		</tr>
+		<tr>
+			<td>Second</td>
+			<td><input type="text" id="second"/></td>
+		</tr>
+		<tr>
+			<td>Milisecond</td>
+			<td><input type="text" id="milisecond"/></td>
+		</tr>
+	</table>
+
+	<script type="text/javascript">
+		const TO_SEC = [
+			365*24*60*60, // year
+			7*24*60*60, // week
+			24*60*60, // day
+			60*60, // hour
+			60, // min
+			1, // sec 
+			1/1000, // ms
+		];
+		let inputs = TAG("input");
+		inputs.forEach((curr,i) => {
+			curr.addEventListener("input", ()=> {
+				let num_sec = parseBase10(curr.value) * TO_SEC[i];
+				inputs.forEach((other, i) => {
+					if(other != curr) {
+						other.value = (num_sec / TO_SEC[i]).toString()
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>
