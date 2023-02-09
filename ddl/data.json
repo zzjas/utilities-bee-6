@@ -1,0 +1,138 @@
+{
+    "sepl": [
+        {
+            "name": "ICSE'24",
+            "link": "https://conf.researchr.org/home/icse-2024",
+            "ddls": [
+                "Mar 29, 2023",
+                "Aug 1, 2023"
+            ]
+        },
+        {
+            "name": "FSE'23",
+            "link": "https://conf.researchr.org/home/fse-2023",
+            "ddls": ["Feb 2, 2023"]
+        },
+        {
+            "name": "ASE'23",
+            "link": "https://conf.researchr.org/home/ase-2023",
+            "ddls": ["May 5, 2023"]
+        },
+        {
+            "name": "ISSTA'23",
+            "link": "https://conf.researchr.org/home/issta-2023",
+            "ddls": [
+                "Nov 10, 2022",
+                "Feb 16, 2023" 
+            ]
+        },
+        {
+            "name": "PLDI'23",
+            "link": "https://pldi23.sigplan.org/",
+            "ddls": ["Nov 10, 2022"]
+        },
+        {
+            "name": "POPL'23",
+            "link": "https://popl23.sigplan.org/",
+            "ddls": ["Jul 7, 2022"]
+        },
+        {
+            "name": "OOPSLA",
+            "link": "https://2023.splashcon.org/track/splash-2023-oopsla",
+            "ddls": [
+                "Oct 28, 2022",
+                "Apr 14, 2023" 
+            ]
+        }
+    ],
+    "syssec": [
+        {
+            "name": "OSDI'23",
+            "link": "https://www.usenix.org/conference/osdi23",
+            "ddls": ["Dec 13, 2022"]
+        },
+        {
+            "name": "SOSP'23",
+            "link": "https://sosp2023.mpi-sws.org/",
+            "ddls": ["April 17, 2023"]
+        },
+        {
+            "name": "ASPLOS'23",
+            "link": "https://asplos-conference.org/asplos-2023-cfp/",
+            "ddls": [
+                "March 31, 2022",
+                "July 7, 2022",
+                "Oct 20, 2022"
+            ]
+        },
+        {
+            "name": "Security'23",
+            "link": "https://www.usenix.org/conference/usenixsecurity23/call-for-papers",
+            "ddls": [
+                "June 7, 2022",
+                "Oct 11, 2022",
+                "Feb 7, 2023"
+            ]
+        },
+        {
+            "name": "Oakland'23",
+            "link": "https://sp2023.ieee-security.org/cfpapers.html",
+            "ddls": [
+                "April 1, 2022",
+                "Aug 19, 2022",
+                "Dec 2, 2022"
+            ]
+        },
+        {
+            "name": "CCS'23",
+            "link": "https://sp2023.ieee-security.org/cfpapers.html",
+            "ddls": [
+                "Jan 19 2023",
+                "May 4, 2023 "
+            ]
+        },
+        {
+            "name": "CCS'23",
+            "link": "https://sp2023.ieee-security.org/cfpapers.html",
+            "ddls": [
+                "Jan 19 2023",
+                "May 4, 2023 "
+            ]
+        },
+        {
+            "name": "NDSS'23",
+            "link": "https://www.ndss-symposium.org/ndss2023/submissions/call-for-papers/",
+            "ddls": [
+                "May 13, 2022",
+                "Jul 29, 2022"
+            ]
+        }
+    ],
+    "mlnlp": [
+        {
+            "name": "ICLR'23",
+            "link": "https://iclr.cc/",
+            "ddls": ["Sep 28, 2022"]
+        },
+        {
+            "name": "NeurIPS'22",
+            "link": "https://nips.cc/",
+            "ddls": ["May 19, 2022"]
+        },
+        {
+            "name": "ACL'23",
+            "link": "https://2023.aclweb.org/calls/main_conference/",
+            "ddls": ["Dec 15, 2022"]
+        },
+        {
+            "name": "NAACL'22",
+            "link": "https://2022.naacl.org/calls/papers/",
+            "ddls": ["Jan 15, 2022"]
+        },
+        {
+            "name": "EMNLP'22",
+            "link": "https://2022.emnlp.org/calls/main_conference_papers/#important-dates",
+            "ddls": ["July 24, 2022"]
+        }
+    ]
+}

@@ -11,16 +11,28 @@
 		table {
 			border: 1px solid black;
 			border-collapse: collapse;
+			margin: 10px;
+			display: inline-block;
+			vertical-align:top;
 		}
 		td {
-			padding-top: 4px;
-			padding-bottom: 4px;
-			padding-left: 5px;
-			padding-right: 5px;
+			padding: 0.1em 0.4em;
 		}
-		table td + td { border-left:thin solid black; }
+
+		table td + td {
+			border-left:thin solid black;
+		}
 		tr#cut {
 			border-top: thick solid red;
+		}
+		.conflink {
+			border: none;
+			padding: 0.35em 0.2em;
+			font-weight: reset;
+			font-family: reset;
+		}
+		caption {
+			font-weight: bold;
 		}
 	</style>
 </head>
@@ -28,64 +40,86 @@
 	<a href="..">back</a> <br/><br/>
 	<p>Do not rely on this.</p><br/>
 
-	<p>Here are some other helpful websites with deadlines:</p>
-	<p><a href="https://www.cs.technion.ac.il/~dan/index_sysvenues_deadline.html">Systems Conferences by Deadline</a></p>
-	<p><a href="https://ccfddl.github.io/">CCF Conference Deadlines</a></p><br/>
+	<div class="center">
+		<table>
+			<caption>SE/PL</caption>
+			<tr>
+				<th>Conference</th>
+				<th>DDL</th>
+				<th>Days Until</th>
+			</tr>
+		</table>
 
-	<table class="center">
-		<tr>
-			<th>Conference</th>
-			<th>DDL</th>
-			<th>Days Until</th>
-		</tr>
-	</table>
+		<table>
+			<caption>Systems/Security</caption>
+			<tr>
+				<th>Conference</th>
+				<th>DDL</th>
+				<th>Days Until</th>
+			</tr>
+		</table>
+
+		<table>
+			<caption>ML/NLP</caption>
+			<tr>
+				<th>Conference</th>
+				<th>DDL</th>
+				<th>Days Until</th>
+			</tr>
+		</table>
+	</div>
+
+	<div class="center">
+		<p>Here are some other helpful websites with deadlines:</p>
+		<p><a href="https://www.cs.technion.ac.il/~dan/index_sysvenues_deadline.html">Systems Conferences by Deadline</a></p>
+		<p><a href="https://ccfddl.github.io/">CCF Conference Deadlines</a></p><br/>
+	</div>
 
 	<script type="text/javascript">
-		window.onload = () => {
-			let table = document.getElementsByTagName("table")[0];
-			let ddl = [
-				["OOPSLA R1", "Oct 28, 2022"],
-				["OOPSLA R2", "Apr 14, 2023"],
-				["PLDI", "Nov 10, 2022"],
-				["POPL", "Jul 7, 2022"],
-
-				["ICSE R1", "Mar 29, 2023"],
-				["ICSE R2", "Aug 1, 2023"],
-				["FSE", "Feb 2, 2023"],
-				["ASE", "May 5, 2023"],
-				["ISSTA R1", "Nov 10, 2022"],
-				["ISSTA R2", "Feb 16, 2023"],
-
-				["Security R3", "Feb 7, 2023"],
-				["Oakland R3", "Dec 2, 2022"],
-				["CCS R1", "Jan 19, 2023"],
-				["CCS R2", "May 4, 2023"],
-				["NDSS R1", "May 13, 2022"],
-				["NDSS R2", "Jul 29, 2022"],
-
-				["OSDI", "Dec 13, 2022"],
-				["SOSP", "April 17, 2023"],
-
-				["ASPLOS R3", "Oct 13, 2022"],
-			];
-			ddl.forEach(e => {
-				let difference = (new Date(e[1])) - (new Date());
-				let days = Math.ceil(difference / (1000 * 3600 * 24));
-				e.push(days);
-			});
-			ddl.sort((x,y) => x[2]-y[2]);
+		function render_table(table, data) {
 			let cut = false;
-			ddl.forEach(e => {
-				if(!e[1]) return;
+			let today = new Date();
+			data.map(conf => 
+				conf.ddls.map((ddl_str, idx) => 
+					{
+						let ddl = new Date(ddl_str)
+						return {
+							name: conf.name + (conf.ddls.length == 1 ? "" : ` R${idx+1}`),
+							link: conf.link,
+							ddl,
+							until: Math.ceil((ddl-today) / (1000 * 3600 * 24))	
+						}
+					}
+				)
+			)
+			.flat()
+			.sort((x,y) => x.ddl-y.ddl)
+			.forEach(e => {
 				let tr = document.createElement('tr');
-				if(!cut && e[2] > 0) {
+				if(!cut && e.until > 0) {
 					cut = true;
 					tr.setAttribute("id", "cut");
 				}
-				tr.innerHTML = `<td>${e[0]}</td><td>${e[1]}</td><td>${e[2]}</td>`;
+				let formattedDate = new Intl.DateTimeFormat("en-US", {
+					year: "numeric",
+					month: "short",
+					day: "2-digit",
+				}).format(e.ddl);
+				tr.innerHTML = `<td><a class="conflink" href="${e.link}">${e.name}</a></td><td>${formattedDate}</td><td>${e.until}</td>`;
 				table.appendChild(tr);
 			});
-		};
+		}
+
+		async function main() {
+			let response = await fetch('./data.json');
+			let data = await response.json();
+			let tables = document.getElementsByTagName("table");
+			render_table(tables[0], data.sepl);
+			render_table(tables[1], data.syssec);
+			render_table(tables[2], data.mlnlp);
+		}
+
+		window.onload = main;
 	</script>
 </body>
 </html>
