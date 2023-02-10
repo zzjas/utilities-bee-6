@@ -93,10 +93,10 @@
 				)
 			)
 			.flat()
-			.sort((x,y) => x.ddl-y.ddl)
+			.sort((x,y) => y.ddl-x.ddl)
 			.forEach(e => {
 				let tr = document.createElement('tr');
-				if(!cut && e.until > 0) {
+				if(!cut && e.until < 0) {
 					cut = true;
 					tr.setAttribute("id", "cut");
 				}
