@@ -47,14 +47,30 @@
     ],
     "syssec": [
         {
-            "name": "OSDI'23",
-            "link": "https://www.usenix.org/conference/osdi23",
-            "ddls": ["Dec 13, 2022"]
+            "name": "OSDI'24",
+            "link": "https://www.usenix.org/conference/osdi24/call-for-papers",
+            "ddls": ["Dec 7, 2023"]
         },
         {
             "name": "SOSP'23",
             "link": "https://sosp2023.mpi-sws.org/",
             "ddls": ["April 17, 2023"]
+        },
+        {
+            "name": "EuroSys'24",
+            "link": "https://2024.eurosys.org/cfp.html",
+            "ddls": [
+                "May 24, 2023",
+                "Oct 19, 2023"
+            ]
+        },
+        {
+            "name": "NSDI'24",
+            "link": "https://www.usenix.org/conference/nsdi24/call-for-papers",
+            "ddls": [
+                "May 4, 2023",
+                "Sep 21, 2023"
+            ]
         },
         {
             "name": "ASPLOS'23",
