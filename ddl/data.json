@@ -19,11 +19,11 @@
             "ddls": ["May 5, 2023"]
         },
         {
-            "name": "ISSTA'23",
-            "link": "https://conf.researchr.org/home/issta-2023",
+            "name": "ISSTA'24",
+            "link": "https://conf.researchr.org/home/issta-2024",
             "ddls": [
-                "Nov 10, 2022",
-                "Feb 16, 2023" 
+                "Dec 15, 2023",
+                "Apr 12, 2024" 
             ]
         },
         {
@@ -37,11 +37,11 @@
             "ddls": ["Jul 11, 2023"]
         },
         {
-            "name": "OOPSLA",
-            "link": "https://2023.splashcon.org/track/splash-2023-oopsla",
+            "name": "OOPSLA'24",
+            "link": "https://2024.splashcon.org/",
             "ddls": [
-                "Oct 28, 2022",
-                "Apr 14, 2023" 
+                "Oct 20, 2023",
+                "Apr 5, 2024" 
             ]
         }
     ],
