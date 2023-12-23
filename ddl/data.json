@@ -1,22 +1,22 @@
 {
     "sepl": [
         {
-            "name": "ICSE'24",
-            "link": "https://conf.researchr.org/home/icse-2024",
+            "name": "ICSE'25",
+            "link": "https://conf.researchr.org/home/icse-2025",
             "ddls": [
-                "Mar 29, 2023",
-                "Aug 1, 2023"
+                "Mar 22, 2024",
+                "Aug 2, 2024"
             ]
         },
         {
-            "name": "FSE'23",
-            "link": "https://conf.researchr.org/home/fse-2023",
-            "ddls": ["Feb 2, 2023"]
+            "name": "FSE'24",
+            "link": "https://2024.esec-fse.org/dates",
+            "ddls": ["Sep 28, 2023"]
         },
         {
             "name": "ASE'23",
-            "link": "https://conf.researchr.org/home/ase-2023",
-            "ddls": ["May 5, 2023"]
+            "link": "https://conf.researchr.org/dates/ase-2024",
+            "ddls": ["Jun 7, 2024"]
         },
         {
             "name": "ISSTA'24",
@@ -27,9 +27,9 @@
             ]
         },
         {
-            "name": "PLDI'23",
+            "name": "PLDI'24",
             "link": "https://pldi23.sigplan.org/",
-            "ddls": ["Nov 10, 2022"]
+            "ddls": ["Nov 16, 2023"]
         },
         {
             "name": "POPL'24",
@@ -100,19 +100,11 @@
             ]
         },
         {
-            "name": "CCS'23",
-            "link": "https://sp2023.ieee-security.org/cfpapers.html",
+            "name": "CCS'24",
+            "link": "https://www.sigsac.org/ccs/CCS2024/call-for/call-for-papers.html",
             "ddls": [
-                "Jan 19 2023",
-                "May 4, 2023 "
-            ]
-        },
-        {
-            "name": "CCS'23",
-            "link": "https://sp2023.ieee-security.org/cfpapers.html",
-            "ddls": [
-                "Jan 19 2023",
-                "May 4, 2023 "
+                "Jan 28, 2024",
+                "Apr 14, 2024"
             ]
         },
         {
@@ -126,14 +118,14 @@
     ],
     "mlnlp": [
         {
-            "name": "ICLR'23",
+            "name": "ICLR'24",
             "link": "https://iclr.cc/",
-            "ddls": ["Sep 28, 2022"]
+            "ddls": ["Sep 28, 2023"]
         },
         {
-            "name": "NeurIPS'22",
+            "name": "NeurIPS'23",
             "link": "https://nips.cc/",
-            "ddls": ["May 19, 2022"]
+            "ddls": ["May 17, 2023"]
         },
         {
             "name": "ACL'23",
