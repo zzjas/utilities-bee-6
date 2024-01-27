@@ -14,7 +14,7 @@
             "ddls": ["Sep 28, 2023"]
         },
         {
-            "name": "ASE'23",
+            "name": "ASE'24",
             "link": "https://conf.researchr.org/dates/ase-2024",
             "ddls": ["Jun 7, 2024"]
         },
@@ -28,7 +28,7 @@
         },
         {
             "name": "PLDI'24",
-            "link": "https://pldi23.sigplan.org/",
+            "link": "https://pldi24.sigplan.org/dates",
             "ddls": ["Nov 16, 2023"]
         },
         {
@@ -38,7 +38,7 @@
         },
         {
             "name": "OOPSLA'24",
-            "link": "https://2024.splashcon.org/",
+            "link": "https://2024.splashcon.org/dates",
             "ddls": [
                 "Oct 20, 2023",
                 "Apr 5, 2024" 
@@ -73,7 +73,7 @@
             ]
         },
         {
-            "name": "ASPLOS'23",
+            "name": "ASPLOS'24",
             "link": "https://www.asplos-conference.org/asplos2024/cfp/",
             "ddls": [
                 "Apr 20, 2023",
@@ -91,12 +91,11 @@
             ]
         },
         {
-            "name": "Oakland'24",
-            "link": "https://sp2024.ieee-security.org/cfpapers.html",
+            "name": "Oakland'25",
+            "link": "https://sp2025.ieee-security.org/cfpapers.html",
             "ddls": [
-                "April 13, 2023",
-                "Aug 3, 2023",
-                "Dec 6, 2023"
+                "Jun 6, 2024",
+                "Nov 14, 2024"
             ]
         },
         {
