@@ -34,15 +34,15 @@
 	<a href="..">back</a> <br/><br/>
 	<div id="out">
 		<div><input type="checkbox" id="all"><label>All</label></div>
-		<div><input type="checkbox" id="lunch" checked><label></label></div>
-		<div><input type="checkbox" id="dinner"><label></label></div>
-		<div><input type="checkbox" id="chinese"><label></label></div>
-		<div><input type="checkbox" id="asian"><label></label></div>
-		<div><input type="checkbox" id="other"><label><label></div>
+		<div><input type="checkbox" id="greenstreet" checked><label></label></div>
+		<div><input type="checkbox" id="urbana" checked><label></label></div>
+		<div><input type="checkbox" id="champaign"><label></label></div>
+		<div><input type="checkbox" id="savoy"><label></label></div>
+		<div><input type="checkbox" id="costco"><label></label></div>
 	</div>
 
 	<br>
-	<button id="pick">Pikachu</button>
+	<button id="pick">Random Pick</button>
 	<p class="result"> </p>
 	<p class="result"> </p>
 	<p class="result"> </p>
@@ -51,48 +51,44 @@
 
 	<br>
 	<script type="text/javascript">
-		const LUNCH = [
+		const GREEN_STREET = [
 			"Evo Cafe",
-			"Kung Fu",
+			"Kung Fu BBQ",
 			"CU LaLa",
 			"Poke Lab",
-			"Jip Bap",
-			"Subway",
-			"McDonald's",
 			"Chipotle",
 			"Thai Fusion",
-			"Einstein",
-			"KFC",
-            "Costco",
-            "Papa Johns",
-            "Dominos",
-            "Burger King",
-		];
-		const DINNER = LUNCH.filter(r => ![
-			"Evo Cafe"
-		].includes(r));
-		const CHINESE = [
-			"Lao Sze Chuan",
 			"Mid Summer Lounge",
-			"Kung Fu",
-		];
-		const ASIAN = [
 			"Yogi",
-			"Star Karaoke",
-			"Star BBQ",
             "Sushi Ichiban",
-            "Sakanaya",
 			"Spoon House",
 			"Pho Noodle Station",
+			"Wan Jia Xiang",
 		];
-		const OTHER = [
-			"LongHorn",
-			"Roadhouse",
-			"Silvercreek",
-            "Black Dog",
+		const URBANA = [
+			"Siam Terrace",
+			"Hmart",
+			"Xinh Xinh Cafe",
+			"The Courier Cafe",
+			"Sakura",
+			"Aroma garden",
 		];
-		const LISTS = [LUNCH, DINNER, CHINESE, ASIAN, OTHER]
-		const CATEGORIES = ["Quick Lunch", "Quick Dinner", "Chinese", "Other Asian", "Other (MX/US/EU...)"];
+		const CHAMPAIGN = [
+			"Seven Saints",
+			"Black Dog",
+		];
+		const SAVOY = [
+			"Star Karaoke",
+			"Star BBQ",
+			"San Maru",
+		];
+		const COSTCO = [
+			"Costco",
+			"Popeyes",
+			"Chick-fil-A",
+		]
+		const LISTS = [GREEN_STREET, URBANA, CHAMPAIGN, SAVOY, COSTCO]
+		const CATEGORIES = ["Green Street", "Urbana", "Champaign", "Savoy", "Costco"];
 
 		function getRandomOne() {
 			let checks = TAG("input").map(e => e.checked);
@@ -104,7 +100,7 @@
 			});
 
 			let nums = new Set();
-			while(nums.size !== 3 && nums.size !== all.length) {
+			while(nums.size !== 1 && nums.size !== all.length) {
   				nums.add(Math.floor(Math.random()*all.length));
 			}
 			nums = Array.from(nums);
